@@ -1,8 +1,5 @@
 
-Here’s your content formatted as a **README.md** file, ready for use in VS Code:
-
-```markdown
-# Process Management
+ Process Management
 
 This documentation summarizes the key concepts, commands, and processes related to Linux process management. It covers topics such as process IDs, parent-child relationships, zombie processes, memory usage monitoring, and background job management.
 
@@ -22,27 +19,35 @@ This documentation summarizes the key concepts, commands, and processes related 
    ```bash
    ps
    ```
-   **Output Example**:
-   ```
-   PID   TTY          TIME CMD
-   1713 pts/0    00:00:00 bash
-   1767 pts/0    00:00:00 ps
-   ```
-   - **PID**: Process ID.
-   - **TTY**: Terminal associated with the process.
-   - **CMD**: Command that started the process.
+````
+
+**Output Example**:
+
+```
+PID   TTY          TIME CMD
+1713 pts/0    00:00:00 bash
+1767 pts/0    00:00:00 ps
+```
+
+- **PID**: Process ID.
+- **TTY**: Terminal associated with the process.
+- **CMD**: Command that started the process.
 
 2. `top`: Real-time view of system processes and resource usage.
+
    - **Sort by memory usage**: Press `Shift + M`.
    - **Sort by CPU usage**: Press `Shift + P`.
 
 3. `jobs`: List background jobs started in the current shell.
+
    ```bash
    jobs
    ```
+
    - Shows job numbers but not PIDs.
 
 4. `kill`: Terminate a process.
+
    - **Syntax**:
      ```bash
      kill <PID>
@@ -57,11 +62,13 @@ This documentation summarizes the key concepts, commands, and processes related 
      ```
 
 5. `killall`: Kill processes by name.
+
    ```bash
    killall <process_name>
    ```
 
 6. `pgrep`: Find PIDs of processes by name.
+
    ```bash
    pgrep <process_name>
    ```
@@ -136,10 +143,13 @@ This documentation summarizes the key concepts, commands, and processes related 
 ### Viewing Background Jobs:
 
 - Use `jobs` to see jobs started in the current shell.
+
   ```bash
   jobs
   ```
+
   **Output Example**:
+
   ```
   [1]+  Running    sleep 500 &
   ```
@@ -213,6 +223,3 @@ ps -o pid,ppid,cmd,stat
 ---
 
 This documentation provides a comprehensive guide to Linux process management. It covers everything from basic commands to handling complex scenarios like zombie processes. By mastering these concepts, you can effectively monitor and manage processes in a Linux environment.
-```
-
-Save this file as `README.md` in your project folder and open it in VS Code. You can preview the file by right-clicking it in the file explorer and selecting **"Open Preview"**. Let me know if you need further adjustments!
