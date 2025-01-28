@@ -1,0 +1,56 @@
+# 1. SSH into your Azure VM
+ssh -i ~/.ssh/tech501-nadia-az-key adminuser@<VM_IP>
+
+# 2. Update the system packages
+sudo apt-get update -y
+sudo apt-get upgrade -y
+
+# 3. Install Nginx (Web server)
+sudo apt-get install nginx -y
+sudo systemctl status nginx    # Check if Nginx is running
+sudo systemctl enable nginx    # Ensure Nginx starts on boot
+sudo systemctl start nginx     # Start Nginx service
+
+# 4. Install Node.js (JavaScript runtime)
+sudo apt-get install curl -y  # Install curl if not already installed
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -  # Setup Node.js 20.x repo
+sudo apt-get install -y nodejs  # Install Node.js
+node -v                        # Verify Node.js version
+npm -v                         # Verify npm version
+
+# 5. Install Git (For cloning repository)
+sudo apt-get install git -y    # Install Git
+git --version                  # Verify Git installation
+
+# 6. Install Application Dependencies (Clone repo and install npm packages)
+git clone https://github.com/your-repository/your-app.git  # Clone your app repository
+cd your-app                    # Change to the app directory
+npm install                    # Install application dependencies
+
+# 7. Configure Firewall (Allow HTTP and your app's port)
+sudo ufw allow 80/tcp          # Allow HTTP traffic (port 80)
+sudo ufw allow 3000/tcp        # Allow your app's port (3000) if it's running on that port
+sudo ufw enable                # Enable the firewall
+
+# 8. Use PM2 to Manage the Node.js App (Optional)
+sudo npm install -g pm2        # Install PM2 globally
+pm2 start app.js --name "your-app"  # Start the app using PM2
+pm2 startup                    # Setup PM2 to run on system boot
+pm2 save                       # Save the PM2 process list
+
+# 9. Move App Folder to Root Directory (For deprovisioning)
+sudo mv /home/adminuser/tech-501-sparta-app-deployment /repo  # Move app folder to /repo
+
+# 10. Deprovision the VM (Preparing VM for image creation)
+sudo waagent -deprovision+user -force  # Deprovision the VM (removes user data)
+
+# 11. Create a Custom Image in Azure Portal
+# (Steps to follow in the Azure portal to create an image from your VM)
+# Navigate to your VM -> Click Capture -> Fill in image name and details -> Select Generalized -> Create
+
+# 12. Create and Replicate the Image in Azure Gallery (If needed)
+# Follow steps in the Azure portal to create a gallery and replicate the image across regions.
+
+# 13. Test the Image (Optional)
+# Once the image is created, you can create a new VM using the image:
+# Go to Virtual Machines -> + Add -> Select "My Images" -> Choose the image you created -> Complete the VM creation
