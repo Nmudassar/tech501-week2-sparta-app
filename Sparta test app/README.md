@@ -1,7 +1,6 @@
 # Sparta test app
 
-
-```markdown
+````markdown
 # Setup and Run Node.js App on Azure Virtual Machine
 
 This guide will walk you through the process of setting up and running a Node.js application on an Azure Virtual Machine (VM). The steps include updating the system, installing required packages, cloning the repository, and configuring the app to run on the VM.
@@ -19,6 +18,7 @@ SSH into your Azure VM using the following command:
 ```bash
 ssh -i ~/.ssh/tech501-nadia-az-key adminuser@<VM_IP>
 ```
+````
 
 Replace `<VM_IP>` with the public IP address of your Azure VM.
 
@@ -121,15 +121,3 @@ After deprovisioning the VM, you can capture the VM as an image in the Azure por
 ## Conclusion
 
 You have successfully set up and run a Node.js app on an Azure Virtual Machine. Additionally, you have prepared the VM to be captured as an image, allowing you to create identical VMs for deployment.
-
-If you need further assistance, feel free to open an issue in this repository or contact the maintainers.
-```
-
-### How to Use This File in VS Code:
-
-1. Open VS Code and create a new file named `README.md`.
-2. Copy and paste the content from above into the `README.md` file.
-3. Save the file.
-4. This `README.md` file provides clear instructions for replicating the process of setting up and running your Node.js app on an Azure VM.
-
-Let me know if you need any further adjustments!
