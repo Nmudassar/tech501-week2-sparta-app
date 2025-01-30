@@ -86,22 +86,11 @@ Apache Bench (`ab`) is a command-line tool for **load testing web servers**. You
 If you don’t have `ab` installed, use the following commands:
 
 - **On Ubuntu/Debian:**
+
   ```bash
   sudo apt update
   sudo apt install apache2-utils -y
-  ```
-- **On CentOS/RHEL:**
-  ```bash
-  sudo yum install httpd-tools -y
-  ```
-- **On macOS:**
-  ```bash
-  brew install apache-bench
-  ```
-- **On Windows (via WSL or Cygwin)**:
-  ```bash
-  sudo apt update
-  sudo apt install apache2-utils -y
+
   ```
 
 ---
