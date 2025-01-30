@@ -129,6 +129,4 @@ If you don’t have `ab` installed, use the following commands:
 
 ---
 
-### **Your Azure VM Monitoring Dashboard & Load Testing is Ready! ✅**
-
-You can now **monitor CPU usage, network traffic, and disk operations in real-time**, and use Apache Bench for performance testing.
+![Monitoring Board](image.png)
