@@ -129,4 +129,4 @@ If you don’t have `ab` installed, use the following commands:
 
 ---
 
-![Monitoring Board](image.png)
+![Monitoring](image-1.png)

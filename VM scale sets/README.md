@@ -82,7 +82,7 @@ This guide provides steps to:
 1. Assign appropriate **Tags** for identification.
 2. Click **Create** to deploy the Scale Set.
 
----
+---![VM scale sets](image.png)
 
 ## **2. Accessing VM Instances in Scale Set**
 
@@ -145,3 +145,4 @@ This guide provides steps to:
           |  Azure Virtual Network (VNet) |
           |  Subnet: Public Subnet        |
           +--------------------------------+
+
