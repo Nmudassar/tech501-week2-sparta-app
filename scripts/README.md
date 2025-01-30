@@ -1,12 +1,34 @@
-# VM Deployment Automation Guide
+- [**Overview**](#overview)
+- [**1️⃣ Database Virtual Machine (MongoDB)**](#1️⃣-database-virtual-machine-mongodb)
+  - [**Steps Taken:**](#steps-taken)
+- [**2️⃣ Application Virtual Machine (Node.js App)**](#2️⃣-application-virtual-machine-nodejs-app)
+  - [**Deployment Steps:**](#deployment-steps)
+- [**3️⃣ User Data (Cloud-Init) Script for Automation**](#3️⃣-user-data-cloud-init-script-for-automation)
+  - [**User Data Script:**](#user-data-script)
+- [**4️⃣ Final Checklist Before Creating the VM**](#4️⃣-final-checklist-before-creating-the-vm)
+  - [✅ **Network Security Group (NSG):**](#-network-security-group-nsg)
+  - [✅ **Database Private IP Address:**](#-database-private-ip-address)
+  - [✅ **Correct Image Selection:**](#-correct-image-selection)
+  - [✅ **User Data in Advanced Settings:**](#-user-data-in-advanced-settings)
+  - [✅ **License Type:**](#-license-type)
+  - [✅ **PM2 Verification:**](#-pm2-verification)
+- [**5️⃣ What Happens After VM Creation?**](#5️⃣-what-happens-after-vm-creation)
+- [**6️⃣ Testing \& Debugging**](#6️⃣-testing--debugging)
+  - [**If the app doesn’t start, check PM2:**](#if-the-app-doesnt-start-check-pm2)
+  - [**If MongoDB isn’t connecting, check:**](#if-mongodb-isnt-connecting-check)
+
+VM Deployment Automation Guide
 
 ## **Overview**
+
 This document provides step-by-step instructions on how to deploy a fully automated virtual machine (VM) for your application using a custom image and user data. The goal is to eliminate manual SSH access and ensure that the application starts automatically after the VM is created.
 
 ---
 
 ## **1️⃣ Database Virtual Machine (MongoDB)**
+
 ### **Steps Taken:**
+
 - A **custom image** of the database VM has been created.
 - MongoDB is set to start automatically using:
   ```bash
@@ -21,16 +43,20 @@ This document provides step-by-step instructions on how to deploy a fully automa
 ---
 
 ## **2️⃣ Application Virtual Machine (Node.js App)**
+
 ### **Deployment Steps:**
+
 - Create a new VM from the **ready-to-run application image**.
 - Add the **user data script** to automate the application startup.
 
 ---
 
 ## **3️⃣ User Data (Cloud-Init) Script for Automation**
+
 The following script should be pasted into the **Advanced → User Data** section during VM creation.
 
 ### **User Data Script:**
+
 ```bash
 #!/bin/bash
 
@@ -55,28 +81,38 @@ pm2 startup systemd
 ---
 
 ## **4️⃣ Final Checklist Before Creating the VM**
+
 ### ✅ **Network Security Group (NSG):**
+
 - Ensure ports **80, 3000, 27017, and SSH (22)** are open.
 
 ### ✅ **Database Private IP Address:**
+
 - Double-check that the MongoDB **private IP** is correct (e.g., `10.0.3.4`).
 
 ### ✅ **Correct Image Selection:**
+
 - Ensure you are selecting the **application image** (not the database image).
 
 ### ✅ **User Data in Advanced Settings:**
+
 - Paste the **full script** into the **User Data** field.
 - Ensure the script starts with `#!/bin/bash`.
 
 ### ✅ **License Type:**
+
 - Select **“Other”** if using a custom image.
 
 ### ✅ **PM2 Verification:**
+
 If the app doesn’t start, try restarting PM2:
+
 ```bash
 pm2 restart myapp
 ```
+
 If PM2 isn’t installed, install it before creating the image:
+
 ```bash
 npm install -g pm2
 ```
@@ -84,9 +120,11 @@ npm install -g pm2
 ---
 
 ## **5️⃣ What Happens After VM Creation?**
+
 - The **user data script runs ONCE** immediately after the VM is created.
 - If the VM **restarts**, the user data **WILL NOT** run again.
 - To ensure the app starts on reboot, run:
+
 ```bash
 pm2 startup
 pm2 save
@@ -95,13 +133,16 @@ pm2 save
 ---
 
 ## **6️⃣ Testing & Debugging**
+
 ### **If the app doesn’t start, check PM2:**
+
 ```bash
 pm2 list
 journalctl -u pm2 -n 50 --no-pager
 ```
 
 ### **If MongoDB isn’t connecting, check:**
+
 ```bash
 netstat -tulnp | grep 27017  # Ensure MongoDB is listening
 ```
@@ -109,4 +150,3 @@ netstat -tulnp | grep 27017  # Ensure MongoDB is listening
 ---
 
 .
-
