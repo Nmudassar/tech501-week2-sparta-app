@@ -1,3 +1,14 @@
+- [**Step 1: Navigate to Azure Monitor**](#step-1-navigate-to-azure-monitor)
+- [**Step 2: Create a New Dashboard**](#step-2-create-a-new-dashboard)
+- [**Step 3: Add CPU Usage Chart**](#step-3-add-cpu-usage-chart)
+- [**Step 4: Add Network Total (In/Out) Chart**](#step-4-add-network-total-inout-chart)
+- [**Step 5: Add Disk Operations Chart**](#step-5-add-disk-operations-chart)
+- [**Step 6: Customize the Dashboard**](#step-6-customize-the-dashboard)
+- [**Step 7: Adjust Time Range \& Refresh Rate**](#step-7-adjust-time-range--refresh-rate)
+  - [**Using Apache Bench (ab) to Load Test Your Azure Virtual Machine**](#using-apache-bench-ab-to-load-test-your-azure-virtual-machine)
+- [**Step 1: Install Apache Bench (ab)**](#step-1-install-apache-bench-ab)
+- [**Step 2: Run Apache Bench on Your Virtual Machine**](#step-2-run-apache-bench-on-your-virtual-machine)
+- [**Step 3: Monitor Performance in Azure Dashboard**](#step-3-monitor-performance-in-azure-dashboard)
 ### **Setting Up a Monitoring Dashboard in Azure for a Virtual Machine**
 
 This guide will walk you through setting up a **monitoring dashboard in Azure Monitor** for a Virtual Machine, tracking:
