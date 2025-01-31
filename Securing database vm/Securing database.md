@@ -1,4 +1,4 @@
-Sure! Here's the updated version of the README file with different headings and phrasing:
+
 
 ---
 
@@ -81,14 +81,14 @@ This architecture leverages three subnets in Azure to secure communication to th
 
 ### Deploy the Database VM
 
-- **VM Name**: `tech501-zainab-in-subnet-sparta-app-db`
+- **VM Name**: `tech501-nadia-in-subnet-sparta-app-db`
 - **Subnet**: Private
 - **No Public IP** assigned.
 - **Allowed Ports**: Only SSH (Port 22).
 
 ### Deploy the Application VM
 
-- **VM Name**: `tech501-zainab-in-3-subnet-sparta-app-vm`
+- **VM Name**: `tech501-nadia-in-3-subnet-sparta-app-vm`
 - **Subnet**: Public
 - **NSG Rules**:
   - Allow HTTP (Port 80) and SSH (Port 22).
@@ -118,7 +118,7 @@ This architecture leverages three subnets in Azure to secure communication to th
 
 ## Setting Up the Network Virtual Appliance (NVA)
 
-- **VM Name**: `tech501-zainab-in-3-subnet-sparta-app-nva`
+- **VM Name**: `tech501-nadia-in-3-subnet-sparta-app-nva`
 - **Subnet**: DMZ
 - **NSG Rules**: Allow SSH access.
 - **Public IP**: Enable for initial access.
