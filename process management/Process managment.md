@@ -1,5 +1,25 @@
 
- Process Management
+ # - [Process Management](#process-management)
+- [- Process Management](#--process-management)
+  - [**1. Understanding Processes in Linux**](#1-understanding-processes-in-linux)
+    - [Commands to Explore Processes:](#commands-to-explore-processes)
+  - [**2. Parent and Child Processes**](#2-parent-and-child-processes)
+    - [Key Points:](#key-points)
+  - [**3. Zombie Processes**](#3-zombie-processes)
+    - [What is a Zombie Process?](#what-is-a-zombie-process)
+    - [Identifying Zombie Processes:](#identifying-zombie-processes)
+    - [Cleaning Zombie Processes:](#cleaning-zombie-processes)
+    - [Avoiding Zombies:](#avoiding-zombies)
+  - [**4. Background Jobs and Process Management**](#4-background-jobs-and-process-management)
+    - [Running Processes in the Background:](#running-processes-in-the-background)
+    - [Viewing Background Jobs:](#viewing-background-jobs)
+    - [Bringing Background Jobs to Foreground:](#bringing-background-jobs-to-foreground)
+    - [Stopping and Restarting Jobs:](#stopping-and-restarting-jobs)
+  - [**5. Monitoring and Managing System Resources**](#5-monitoring-and-managing-system-resources)
+    - [Memory and CPU Usage:](#memory-and-cpu-usage)
+    - [Example of Process Status:](#example-of-process-status)
+  - [**6. Signals in Process Management**](#6-signals-in-process-management)
+    - [Common Signals:](#common-signals)
 
 This documentation summarizes the key concepts, commands, and processes related to Linux process management. It covers topics such as process IDs, parent-child relationships, zombie processes, memory usage monitoring, and background job management.
 

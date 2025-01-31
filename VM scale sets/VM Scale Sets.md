@@ -1,3 +1,22 @@
+- [README - Azure VM Scale Set Creation \& Monitoring](#readme---azure-vm-scale-set-creation--monitoring)
+  - [**Overview**](#overview)
+  - [**1. Setting Up an Azure VM Scale Set**](#1-setting-up-an-azure-vm-scale-set)
+    - [**Step 1: Navigate to Azure VM Scale Sets**](#step-1-navigate-to-azure-vm-scale-sets)
+    - [**Step 2: Define Scale Set Parameters**](#step-2-define-scale-set-parameters)
+    - [**Step 3: Configure Auto-scaling**](#step-3-configure-auto-scaling)
+    - [**Step 4: Choose an Image \& VM Size**](#step-4-choose-an-image--vm-size)
+    - [**Step 5: Configure Disks \& Networking**](#step-5-configure-disks--networking)
+    - [**Step 6: Load Balancer Configuration**](#step-6-load-balancer-configuration)
+    - [**Step 7: Enable Health Monitoring \& Auto Repairs**](#step-7-enable-health-monitoring--auto-repairs)
+    - [**Step 8: Add Custom User Data (Startup Script)**](#step-8-add-custom-user-data-startup-script)
+    - [**Step 9: Review \& Deploy**](#step-9-review--deploy)
+  - [**2. Accessing VM Instances in Scale Set**](#2-accessing-vm-instances-in-scale-set)
+    - [**Step 1: Retrieve Load Balancer Public IP**](#step-1-retrieve-load-balancer-public-ip)
+    - [**Step 2: SSH into Instances**](#step-2-ssh-into-instances)
+  - [**5. Cleanup \& Deletion**](#5-cleanup--deletion)
+    - [**Step 1: Delete Scale Set \& Load Balancer**](#step-1-delete-scale-set--load-balancer)
+    - [**Step 2: Verify Resources are Removed**](#step-2-verify-resources-are-removed)
+- [Daigram](#daigram)
 # README - Azure VM Scale Set Creation & Monitoring
 
 ## **Overview**

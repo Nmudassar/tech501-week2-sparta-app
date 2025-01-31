@@ -1,3 +1,16 @@
+- [PM2 Process Management for Node.js Application](#pm2-process-management-for-nodejs-application)
+  - [Prerequisites](#prerequisites)
+  - [Steps to Manage the Node.js Application](#steps-to-manage-the-nodejs-application)
+    - [1. **Navigate to the Application Directory**](#1-navigate-to-the-application-directory)
+    - [2. **Start the Application with PM2**](#2-start-the-application-with-pm2)
+    - [3. **Restart the Application**](#3-restart-the-application)
+    - [4. **Stop the Application**](#4-stop-the-application)
+    - [5. **Check PM2 Logs**](#5-check-pm2-logs)
+    - [6. **Update Environment Variables (Optional)**](#6-update-environment-variables-optional)
+    - [7. **Make PM2 Start on Boot**](#7-make-pm2-start-on-boot)
+    - [8. **Manage Multiple Processes**](#8-manage-multiple-processes)
+  - [Troubleshooting](#troubleshooting)
+  - [Example PM2 Commands](#example-pm2-commands)
 # PM2 Process Management for Node.js Application
 
 This README provides instructions for managing your Node.js application using PM2, including starting, restarting, and stopping your app, as well as some troubleshooting tips.
