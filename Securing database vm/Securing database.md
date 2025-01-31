@@ -1,5 +1,3 @@
-
-
 ---
 
 # Database Security with a 3-Subnet Network Architecture
@@ -8,26 +6,24 @@ This guide provides a step-by-step approach to securing a database using a 3-sub
 
 ## Contents
 
-- [Database Security with a 3-Subnet Network Architecture](#database-security-with-a-3-subnet-network-architecture)
-  - [Contents](#contents)
-  - [Overview of the Architecture](#overview-of-the-architecture)
-  - [Network Plan](#network-plan)
-    - [Virtual Network Setup](#virtual-network-setup)
-    - [Public Subnet Configuration](#public-subnet-configuration)
-    - [Private Subnet Configuration](#private-subnet-configuration)
-    - [DMZ Subnet Configuration](#dmz-subnet-configuration)
-  - [Hands-on Lab](#hands-on-lab)
-    - [Create a Virtual Network](#create-a-virtual-network)
-    - [Deploy the Database VM](#deploy-the-database-vm)
-    - [Deploy the Application VM](#deploy-the-application-vm)
-    - [Accessing the Application VM](#accessing-the-application-vm)
-    - [Testing Database Connectivity](#testing-database-connectivity)
-  - [Setting Up the Network Virtual Appliance (NVA)](#setting-up-the-network-virtual-appliance-nva)
-    - [Configure Routing Table](#configure-routing-table)
-  - [Enable IP Forwarding](#enable-ip-forwarding)
-  - [Configure IP Tables](#configure-ip-tables)
-  - [Database Security Enhancements](#database-security-enhancements)
-  - [Resource Cleanup](#resource-cleanup)
+- [Overview of the Architecture](#overview-of-the-architecture)
+- [Network Plan](#network-plan)
+  - [Virtual Network Setup](#virtual-network-setup)
+  - [Public Subnet Configuration](#public-subnet-configuration)
+  - [Private Subnet Configuration](#private-subnet-configuration)
+  - [DMZ Subnet Configuration](#dmz-subnet-configuration)
+- [Hands-on Lab](#hands-on-lab)
+  - [Create a Virtual Network](#create-a-virtual-network)
+  - [Deploy the Database VM](#deploy-the-database-vm)
+  - [Deploy the Application VM](#deploy-the-application-vm)
+  - [Accessing the Application VM](#accessing-the-application-vm)
+  - [Testing Database Connectivity](#testing-database-connectivity)
+- [Setting Up the Network Virtual Appliance (NVA)](#setting-up-the-network-virtual-appliance-nva)
+  - [Configure Routing Table](#configure-routing-table)
+- [Enable IP Forwarding](#enable-ip-forwarding)
+- [Configure IP Tables](#configure-ip-tables)
+- [Database Security Enhancements](#database-security-enhancements)
+- [Resource Cleanup](#resource-cleanup)
 
 ---
 
@@ -104,7 +100,7 @@ This architecture leverages three subnets in Azure to secure communication to th
 
 - Use the following command to SSH into the App VM:
   ```bash
-  ssh -i ~/.ssh/tech501-zainab-az-key adminuser@172.187.177.243
+  ssh -i ~/.ssh/tech501-nadia-az-key adminuser@20.26.237.241
   ```
 
 ### Testing Database Connectivity
