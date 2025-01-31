@@ -131,9 +131,9 @@ This guide provides steps to:
 ---
 
 | | |
-+-----------+    +-----------+ +-----------+
++-----------+ +-----------+ +-----------+
 | VM Instance | | VM Instance | | VM Instance |
-| (VMSS-1) | |  (VMSS-2) | | (VMSS-3) |
+| (VMSS-1) | | (VMSS-2) | | (VMSS-3) |
 | Private IP | | Private IP | | Private IP |
 +-----------+ +-----------+ +-----------+
 | | |
@@ -145,4 +145,3 @@ This guide provides steps to:
           |  Azure Virtual Network (VNet) |
           |  Subnet: Public Subnet        |
           +--------------------------------+
-
