@@ -2,7 +2,6 @@
 
 # Database Security with a 3-Subnet Network Architecture
 
-This guide provides a step-by-step approach to securing a database using a 3-subnet architecture in Azure. The architecture is designed to segregate network traffic, where the database resides in a private subnet, the application runs in a public subnet, and a DMZ subnet acts as a traffic filter via a Network Virtual Appliance (NVA).
 
 ## Contents
 
@@ -213,6 +212,18 @@ chmod +x config-ip-tables.sh
 ls
 Run the script:
 ./config-ip-tables.sh
+
+# Review the Output:
+
+The script will configure iptables to allow:
+
+Loopback traffic
+
+Established connections
+
+SSH access Forwarding of MongoDB (TCP port 27017) and ICMP traffic
+
+All other traffic is dropped.
 
 ## Database Security Enhancements
 
