@@ -1,28 +1,28 @@
----
-
 # Database Security with a 3-Subnet Network Architecture
-
 
 ## Contents
 
-- [Overview of the Architecture](#overview-of-the-architecture)
-- [Network Plan](#network-plan)
-  - [Virtual Network Setup](#virtual-network-setup)
-  - [Public Subnet Configuration](#public-subnet-configuration)
-  - [Private Subnet Configuration](#private-subnet-configuration)
-  - [DMZ Subnet Configuration](#dmz-subnet-configuration)
-- [Hands-on Lab](#hands-on-lab)
-  - [Create a Virtual Network](#create-a-virtual-network)
-  - [Deploy the Database VM](#deploy-the-database-vm)
-  - [Deploy the Application VM](#deploy-the-application-vm)
-  - [Accessing the Application VM](#accessing-the-application-vm)
-  - [Testing Database Connectivity](#testing-database-connectivity)
-- [Setting Up the Network Virtual Appliance (NVA)](#setting-up-the-network-virtual-appliance-nva)
-  - [Configure Routing Table](#configure-routing-table)
-- [Enable IP Forwarding](#enable-ip-forwarding)
-- [Configure IP Tables](#configure-ip-tables)
-- [Database Security Enhancements](#database-security-enhancements)
-- [Resource Cleanup](#resource-cleanup)
+- [Database Security with a 3-Subnet Network Architecture](#database-security-with-a-3-subnet-network-architecture)
+  - [Contents](#contents)
+  - [Overview of the Architecture](#overview-of-the-architecture)
+  - [Network Plan](#network-plan)
+    - [Virtual Network Setup](#virtual-network-setup)
+    - [Public Subnet Configuration](#public-subnet-configuration)
+    - [Private Subnet Configuration](#private-subnet-configuration)
+    - [DMZ Subnet Configuration](#dmz-subnet-configuration)
+  - [Hands-on Lab](#hands-on-lab)
+    - [Create a Virtual Network](#create-a-virtual-network)
+    - [Deploy the Database VM](#deploy-the-database-vm)
+    - [Deploy the Application VM](#deploy-the-application-vm)
+    - [Accessing the Application VM](#accessing-the-application-vm)
+    - [Testing Database Connectivity](#testing-database-connectivity)
+  - [Setting Up the Network Virtual Appliance (NVA)](#setting-up-the-network-virtual-appliance-nva)
+    - [Configure Routing Table](#configure-routing-table)
+  - [Enable IP Forwarding](#enable-ip-forwarding)
+  - [Configure IP Tables](#configure-ip-tables)
+- [Review the Output:](#review-the-output)
+  - [Database Security Enhancements](#database-security-enhancements)
+  - [Resource Cleanup](#resource-cleanup)
 
 ---
 
@@ -207,11 +207,15 @@ echo ""
 
 Run the script to apply the rules.
 
----Change permissions of the file:
-chmod +x config-ip-tables.sh
-ls
+Change permissions of the file:
+
+`chmod +x config-ip-tables.sh`
+
+`ls`
+
 Run the script:
-./config-ip-tables.sh
+
+`./config-ip-tables.sh `
 
 # Review the Output:
 

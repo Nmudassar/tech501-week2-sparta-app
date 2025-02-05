@@ -1,143 +1,109 @@
-- [**Step 1: Navigate to Azure Monitor**](#step-1-navigate-to-azure-monitor)
-- [**Step 2: Create a New Dashboard**](#step-2-create-a-new-dashboard)
-- [**Step 3: Add CPU Usage Chart**](#step-3-add-cpu-usage-chart)
-- [**Step 4: Add Network Total (In/Out) Chart**](#step-4-add-network-total-inout-chart)
-- [**Step 5: Add Disk Operations Chart**](#step-5-add-disk-operations-chart)
-- [**Step 6: Customize the Dashboard**](#step-6-customize-the-dashboard)
-- [**Step 7: Adjust Time Range \& Refresh Rate**](#step-7-adjust-time-range--refresh-rate)
-  - [**Using Apache Bench (ab) to Load Test Your Azure Virtual Machine**](#using-apache-bench-ab-to-load-test-your-azure-virtual-machine)
-- [**Step 1: Install Apache Bench (ab)**](#step-1-install-apache-bench-ab)
-- [**Step 2: Run Apache Bench on Your Virtual Machine**](#step-2-run-apache-bench-on-your-virtual-machine)
-- [**Step 3: Monitor Performance in Azure Dashboard**](#step-3-monitor-performance-in-azure-dashboard)
-### **Setting Up a Monitoring Dashboard in Azure for a Virtual Machine**
+- [Azure Monitoring and Alerting Setup](#azure-monitoring-and-alerting-setup)
+  - [Introduction](#introduction)
+  - [Creating a Monitoring Dashboard](#creating-a-monitoring-dashboard)
+  - [Installing Apache Bench (ab)](#installing-apache-bench-ab)
+  - [Steps to Create an Action Group in Azure](#steps-to-create-an-action-group-in-azure)
+  - [Steps to Create an Alert Rule in Azure Monitor](#steps-to-create-an-alert-rule-in-azure-monitor)
+  - [Conculsion](#conculsion)
 
-This guide will walk you through setting up a **monitoring dashboard in Azure Monitor** for a Virtual Machine, tracking:
+# Azure Monitoring and Alerting Setup
 
-1. **CPU Average**
-2. **Network Total (In/Out)**
-3. **Disk Operations (Read/Write)**
+## Introduction
 
----
+This guide provides step-by-step instructions to set up a monitoring dashboard, install Apache Bench for CPU stress testing, and create alert rules in Azure Monitor.
 
-## **Step 1: Navigate to Azure Monitor**
+## Creating a Monitoring Dashboard
 
-1. **Sign in** to your [Azure Portal](https://portal.azure.com).
-2. In the search bar, type **"Monitor"** and select **Azure Monitor**.
+1. From the **VM Overview** page, navigate to **Monitoring**.
+2. Pin the desired metrics like cpu Average , memory Average, and disk read ops/sec to the dashboard.
+3. Choose **Create New Dashboard** and **Share** it.
+4. From the **Dashboard Hub**, edit metrics to view them in one line.
+5. Azure provides **1-minute interval checks**.
+6. Change the local time filter to the **last 30 minutes** and save the dashboard.
 
----
+## Installing Apache Bench (ab)
 
-## **Step 2: Create a New Dashboard**
-
-1. Click on **"Dashboards"** in the Azure portal.
-2. Click **"+ New dashboard"** at the top.
-3. Give your dashboard a **name** (e.g., `VM-Monitoring-Dashboard`).
-4. Choose **Shared Dashboard** if you want others to access it.
-5. Click **"Done Customizing"** to save.
-
----
-
-## **Step 3: Add CPU Usage Chart**
-
-1. In Azure Monitor, go to **Metrics**.
-2. Click **"Select a resource"**, choose your **Virtual Machine**.
-3. Under **Metrics Namespace**, choose **"Virtual Machine Host"**.
-4. In the **Metric dropdown**, select **"Percentage CPU"**.
-5. Click the **"Pin to Dashboard"** (📌) icon.
-6. Choose **"Existing Dashboard"** and select the dashboard you created.
-
----
-
-## **Step 4: Add Network Total (In/Out) Chart**
-
-1. Go to **Azure Monitor > Metrics**.
-2. Select your **Virtual Machine**.
-3. Choose **"Network"** as the Metrics Namespace.
-4. Select **"Network In Total"** and **"Network Out Total"**.
-5. Click the **"Pin to Dashboard"** (📌) icon and select your dashboard.
-
----
-
-## **Step 5: Add Disk Operations Chart**
-
-1. Go to **Azure Monitor > Metrics**.
-2. Select your **Virtual Machine**.
-3. Choose **"Disk"** as the Metrics Namespace.
-4. Select **"Disk Read Operations/Sec"** and **"Disk Write Operations/Sec"**.
-5. Click the **"Pin to Dashboard"** (📌) icon and select your dashboard.
-
----
-
-## **Step 6: Customize the Dashboard**
-
-1. **Go to your dashboard** from the Azure portal.
-2. Click **"Edit"** to adjust the chart sizes and arrangement.
-3. Drag and resize **CPU, Network, and Disk charts** for a clean layout.
-4. Click **"Done Customizing"** to save.
-
----
-
-## **Step 7: Adjust Time Range & Refresh Rate**
-
-1. On the dashboard, look for the **Time Range** dropdown.
-2. Set it to **Last 30 minutes / 1 hour / 24 hours** as needed.
-3. Enable **Auto Refresh** for real-time monitoring.
-
----
-
----
-
-### **Using Apache Bench (ab) to Load Test Your Azure Virtual Machine**
-
-Apache Bench (`ab`) is a command-line tool for **load testing web servers**. You can use it to **simulate multiple requests** to your Azure Virtual Machine and monitor its performance using the dashboard you set up.
-
----
-
-## **Step 1: Install Apache Bench (ab)**
-
-If you don’t have `ab` installed, use the following commands:
-
-- **On Ubuntu/Debian:**
-
-  ```bash
-  sudo apt update
-  sudo apt install apache2-utils -y
-
-  ```
-
----
-
-## **Step 2: Run Apache Bench on Your Virtual Machine**
-
-1. **Find Your Web Server IP or Domain**
-
-   - If your VM hosts a **web application**, get its **Public IP** from the Azure portal.
-   - Example: `http://<VM-PUBLIC-IP>/`
-
-2. **Basic Load Test Command**
-
-   ```bash
-   ab -n 100 -c 10 http://<VM-PUBLIC-IP>/
+1. SSH into the virtual machine:
+   ```sh
+   ssh <your-vm-user>@<your-vm-ip>
    ```
-
-   - `-n 100` → Total number of requests.
-   - `-c 10` → Number of concurrent requests.
-
-3. **Aggressive Load Test**
-   ```bash
-   ab -n 1000 -c 100 http://<VM-PUBLIC-IP>/
+2. Install Apache Bench:
+   ```sh
+   sudo apt-get install apache2-utils
    ```
-   - Sends **1000 requests** with **100 concurrent users**.
+3. Overload the CPU with HTTP requests:
+   ```sh
+   ab -n 1000 -c 100 http://<your-vm-ip>/
+   ```
+4. Observe CPU utilization increase on the dashboard.
 
----
+## Steps to Create an Action Group in Azure
 
-## **Step 3: Monitor Performance in Azure Dashboard**
+1. **Create an Action Group**
 
-1. Go to **Azure Portal > Monitor > Dashboards**.
-2. Check metrics:
-   - **CPU Usage** should spike as `ab` increases the load.
-   - **Network In/Out** should increase as requests are handled.
-   - **Disk Read/Write Operations** may also increase.
+   - Go to **Azure Portal** → Navigate to **Monitor**.
+   - Select **Alerts** → Click on **Manage actions**.
+   - Click **Create action group**.
+   - Fill in the details:
+     - **Subscription**: Choose your Azure subscription.
+     - **Resource Group**: Select an existing one or create a new one.
+     - **Action Group Name**: e.g., `CPU_Alert_Group`.
+     - **Display Name**: e.g., `CPU Alert`.
 
----
+2. **Add an Email Notification**
 
-![Monitoring](image-1.png)
+   - Under **Notifications**, click **Add notification**.
+   - Choose **Email/SMS message/Push/Voice**.
+   - Enter your email address.
+   - Click **OK**.
+
+3. **Save and Use the Action Group**
+   - Click **Review + Create**, then **Create**.
+   - Now, when creating your CPU usage alert, select this action group.
+
+## Steps to Create an Alert Rule in Azure Monitor
+
+1. **Create an Alert Rule**
+
+   - Go to **Azure Portal** → Navigate to **Monitor**.
+   - Select **Alerts** → Click on **Create** → **Alert rule**.
+   - Select the **Target Resource**:
+     - Click **Select scope**.
+     - Choose your **Virtual Machine (VM)** or relevant resource.
+     - Click **Apply**.
+
+2. **Define the Condition**
+   - Click **Add condition**.
+   - Select **Percentage CPU** under **Signals**.
+   - Set the **Threshold value** to **greater than 3%**.
+   - Configure **Aggregation Type** to **Average**.
+   - Set **Evaluation Frequency** (e.g., every 1 minute).
+   - Click **Done**.
+
+!![Cpu](<Images1/Screenshot 2025-02-04 230615.png>)
+
+1. **Configure the Action Group (Email Notification)**
+
+   - Under **Actions**, click **Select action group**.
+   - Click **Create action group**.
+   - Fill in:
+     - **Subscription & Resource Group**.
+     - **Action Group Name** (e.g., `CPU_Alert_Group`).
+   - Under **Notifications**, select **Email/SMS message/Push/Voice**.
+   - Enter the **Email Address**.
+   - Click **OK**.
+     ![email alert](<Images1/Screenshot 2025-02-04 230641.png>)
+     !
+
+1. **Configure Alert Rule Details**
+   - Name the alert rule (e.g., `High_CPU_Alert`).
+   - Set the **Severity Level** (e.g., Informational, Warning, Critical).
+   - (Optional) Enable **Automatically Resolve Alerts**.
+   - Click **Create Alert Rule**.
+
+!![alert eamil
+](<Images1/Screenshot 2025-02-04 232718.png>)
+
+## Conculsion
+
+By following these steps, you will have set up an Azure monitoring dashboard, tested CPU load with Apache Bench, and configured alert rules to notify you of high CPU usage on your VM. This setup helps in proactive monitoring and alerting for system performance issues.
